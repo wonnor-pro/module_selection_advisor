@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suggestions</title>
+</head>
+<body>
+    <h1>Part IIA Course Selection Suggestions</h1>
+    {% if data %}
+    <p>The suggestion is:</p>
+    <table>
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>Term</td>
+                <td>Course Title</td>
+            </tr>
+            {% for course in data%}
+            <tr>
+                <td>{{ course[0] }}</td>
+                <td>{{ course[2] }}</td>
+                <td>{{ course[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <p><a href="/">back</a></p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Information</title>
+    <link rel="stylesheet" type="text/css" href="static/main.css">
+
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>Part IIA Course information</h1>
+        </div>
+        <div id="content">
+            <p>These courses are available:</p>
+            {% if courses %}
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>Term</td>
+                        <td>Course Title</td>
+                    </tr>
+                    {% for course in courses%}
+                    <tr>
+                        <td>{{ course[0] }}</td>
+                        <td>{{ course[2] }}</td>
+                        <td>{{ course[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+        <div id="footer">
+            <p>Copyright &copy; 2020 Connor Wang.</p>
+        </div>
+    </div>
+
+</body>
+</html>

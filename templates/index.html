@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Part IIA Module Selection Adviser</title>
+    <link rel="stylesheet" type="text/css" href="static/main.css">
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>Part IIA Module Selection Advisor</h1>
+        </div>
+        <div id="content">
+            <p>Welcome to the module selection adviser. You can check the following items:</p>
+            <p><a href="info">Course List</a></p>
+
+            {% if area %}
+                <p>There are nine areas provided:</p>
+                <ul>
+                    {% for i in area%}
+                    <li>{{i[0]}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if not DEFO %}
+                <p>1. <a href="form/DEFO">Choose the courses that you are DEFINITELY going to choose.</a></p>
+            {% else %}
+                <p>1. The following courses you are DEFINITELY going to choose:</p>
+                <ul>
+                {% for course in DEFO %}
+                    <li> {{course}} </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if not WANT %}
+                <p>2. <a href="form/WANT">Choose the courses that you WANT to choose.</a>
+            {% else %}
+                <p>2. The following courses you WANT going to choose:</p>
+                <ul>
+                {% for course in WANT %}
+                    <li> {{course}} </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if not OKAY %}
+                <p>3. <a href="form/OKAY">Choose the courses that you feel OKAY to choose if necessary.</a></p>
+            {% else %}
+                <p>3. The following courses you feel OKAY to choose if necessary:</p>
+                <ul>
+                {% for course in OKAY %}
+                    <li> {{course}} </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if not PREF %}
+                <p>4. <a href="area">Choose your favourite four areas.</a></p>
+            {% else %}
+                <p>4. Your favourite four areas in descending order are:</p>
+                <ul>
+                {% for i in PREF %}
+                    <li> {{area[i][0]}} </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if not data %}
+                <p>Please fill in the forms above. Results will be shown below once all the forms have been filled.</p>
+            {% else %}
+                <p>The suggestion is:</p>
+                <table>
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>Term</td>
+                        <td>Set</td>
+                        <td>Course Title</td>
+                    </tr>
+                    {% for course in data%}
+                    <tr>
+                        <td>{{ course[0] }}</td>
+                        <td>{{ course[2] }}</td>
+                        <td>{{ course[3] }}</td>
+                        <td>{{ course[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            <p><a href="reset">Reset</a></p>
+        </div>
+        <div id="footer">
+            <p>Copyright &copy; 2020 Connor Wang.</p>
+        </div>
+    </div>
+</body>
+</html>

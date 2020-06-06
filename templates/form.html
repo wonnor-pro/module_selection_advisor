@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+    <link rel="stylesheet" type="text/css" href="../static/main.css">
+</head>
+<body>
+    <div id="container">
+
+        {% if type=="DEFO" %}
+        <p>Please choose the courses that you are DEFINITELY going to take:</p>
+        {% endif %}
+
+        {% if type=="WANT" %}
+        <p>Please choose the courses that you WANT to take:</p>
+        {% endif %}
+
+        {% if type=="OKAY" %}
+        <p>Please choose the courses that you feel OKAY to choose if necessary:</p>
+        {% endif %}
+
+
+        <form action="http://127.0.0.1:5000/get_form/{{type}}" method="POST">
+
+            {% for course in courses %}
+            <input type="checkbox" name="courseID" value="{{course[0]}}">{{course[0]}}: {{course[1]}}<br>
+            {% endfor %}
+
+            <p></p>
+            <input type="submit" value="submit">
+        </form>
+
+        <div id="footer">
+            <p>Copyright &copy; 2020 Connor Wang.</p>
+        </div>
+    </div>
+
+</body>
+</html>
